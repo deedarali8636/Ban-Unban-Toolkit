@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ban Unban Toilkit &#127477;&#127472;</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Arial&display=swap');
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: black;
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+      z-index: 0;
+    }
+
+    #matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background: black;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 40px 20px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    select, input, button {
+      padding: 12px;
+      width: 90%;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      backdrop-filter: blur(4px);
+    }
+
+    button {
+      background: rgba(0, 255, 204, 0.2);
+      border: 1px solid #00ffcc;
+      color: #00ffcc;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00ffcc;
+      color: black;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #00ffcc;
+    }
+
+    .footer {
+      margin-top: 40px;
+      color: gray;
+      font-size: 14px;
+    }
+
+    .warning {
+      color: #ffaa00;
+      margin-top: 30px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div id="matrix"></div>
+  <div id="particles-js"></div>
+  <div class="container">
+    <h1>Ban Unban Toolkit &#127477;&#127472;</h1>
+
+    <select id="problemType" onchange="updateLanguageAppeals()">
+      <option value="">-- SELECT PROBLEM --</option>
+      <option value="ban">Permanent Ban</option>
+      <option value="unban">Unban</option>
+      <option value="otp">1 Hour OTP Solution</option>
+      <option value="official">WhatsApp Official Problem</option>
+    </select>
+
+    <input type="text" id="whatsappNumber" placeholder="ENTER YOUR NUMBER BABE">
+
+    <select id="appealType">
+      <option value="">-- Select Appeal --</option>
+      <option value="english">Appeal in English</option>
+      <option value="arabic">Appeal in Arabic</option>
+      <option value="bangla">Appeal in Bangla</option>
+    </select>
+
+    <button onclick="sendEmail()">SEND</button>
+    <button onclick="contactOwner()">CONTACT WITH OWNER</button>
+
+    <div class="footer">DEVELOPED BY DEEDAR</div>
+    <div class="warning">This portal is created only to expose scammers and fraudsters. Don&rsquo;t misuse it or harm any innocent user. &#10024;</div>
+  </div>
+
+  <!-- Matrix Effect JS -->
+  <script>
+    const matrix = document.createElement('canvas');
+    matrix.id = 'matrix-canvas';
+    document.getElementById('matrix').appendChild(matrix);
+    const ctx = matrix.getContext('2d');
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    matrix.width = width;
+    matrix.height = height;
+
+    const letters = '&#12450;&#12449;&#12459;&#12469;&#12479;&#12490;&#12495;&#12510;&#12516;&#12515;&#12521;&#12527;&#12460;&#12470;&#12480;&#12496;&#12497;&#12452;&#12451;&#12461;&#12471;&#12481;&#12491;&#12498;&#12511;&#12522;&#12528;&#12462;&#12472;&#12482;&#12499;&#12500;&#12454;&#12453;&#12463;&#12473;&#12484;&#12492;&#12501;&#12512;&#12518;&#12517;&#12523;&#12464;&#12474;&#12485;&#12502;&#12503;&#12456;&#12455;&#12465;&#12475;&#12486;&#12493;&#12504;&#12513;&#12524;&#12529;&#12466;&#12476;&#12487;&#12505;&#12506;&#12458;&#12457;&#12467;&#12477;&#12488;&#12494;&#12507;&#12514;&#12520;&#12519;&#12525;&#12530;&#12468;&#12478;&#12489;&#12508;&#12509;&#12532;0123456789ABCDEF';
+
+    const fontSize = 16;
+    const columns = Math.floor(width / fontSize);
+    const drops = new Array(columns).fill(1);
+
+    function draw() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.fillStyle = '#0F0';
+      ctx.font = fontSize + 'px monospace';
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 35);
+
+    window.addEventListener('resize', () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      matrix.width = width;
+      matrix.height = height;
+    });
+  </script>
+
+  <!-- Particles.js Script -->
+  <script src="js/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 150, density: { enable: true, value_area: 800 } },
+        color: { value: "#00ffff" },
+        shape: { type: "circle" },
+        opacity: {
+          value: 0.9,
+          random: false,
+          anim: { enable: true, speed: 0.5, opacity_min: 0.4 }
+        },
+        size: {
+          value: 4,
+          random: true,
+          anim: { enable: true, speed: 1, size_min: 0.3 }
+        },
+        line_linked: {
+          enable: true,
+          distance: 120,
+          color: "#00ffff",
+          opacity: 0.6,
+          width: 1.2
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: "none",
+          random: false,
+          straight: false,
+          out_mode: "bounce"
+        }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          grab: { distance: 200, line_linked: { opacity: 0.8 } },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+
+  <script>
+    const appeals = {
+      english: `Dear WhatsApp Support Team,
+
+I hope this message finds you well. I am writing to you because I am experiencing an issue related to my WhatsApp account. I respectfully request your attention to the following matter:
+
+[Explain the specific problem here &mdash; for example: I have been permanently banned / unable to receive OTP / facing issues with my official account.]
+
+I understand the importance of adhering to WhatsApp's terms and conditions and apologize sincerely if there was any violation from my side. I assure you that I have learned from this experience and will strictly follow the community guidelines in the future.
+
+This number is extremely important for my personal and professional communication. Please help me resolve this issue or reinstate my account.
+
+Thank you so much for your kind support.
+
+Warm regards.`,
+
+      arabic: `&#1601;&#1585;&#1610;&#1602; &#1583;&#1593;&#1605; WhatsApp &#1575;&#1604;&#1605;&#1581;&#1578;&#1585;&#1605;&#1548;
+
+&#1571;&#1603;&#1578;&#1576; &#1573;&#1604;&#1610;&#1603;&#1605; &#1576;&#1587;&#1576;&#1576; &#1605;&#1588;&#1603;&#1604;&#1577; &#1571;&#1608;&#1575;&#1580;&#1607;&#1607;&#1575; &#1601;&#1610; &#1581;&#1587;&#1575;&#1576;&#1610; &#1593;&#1604;&#1609; WhatsApp. &#1571;&#1585;&#1580;&#1608; &#1605;&#1606;&#1603;&#1605; &#1575;&#1604;&#1605;&#1587;&#1575;&#1593;&#1583;&#1577; &#1575;&#1604;&#1593;&#1575;&#1580;&#1604;&#1577; &#1601;&#1610; &#1607;&#1584;&#1575; &#1575;&#1604;&#1571;&#1605;&#1585;.
+
+[&#1575;&#1588;&#1585;&#1581; &#1575;&#1604;&#1605;&#1588;&#1603;&#1604;&#1577; &#1575;&#1604;&#1605;&#1581;&#1583;&#1583;&#1577; &#1607;&#1606;&#1575; &mdash; &#1593;&#1604;&#1609; &#1587;&#1576;&#1610;&#1604; &#1575;&#1604;&#1605;&#1579;&#1575;&#1604;: &#1578;&#1605; &#1581;&#1592;&#1585;&#1610; &#1606;&#1607;&#1575;&#1574;&#1610;&#1611;&#1575; / &#1604;&#1605; &#1571;&#1578;&#1604;&#1602;&#1614; &#1585;&#1605;&#1586; &#1575;&#1604;&#1578;&#1581;&#1602;&#1602; / &#1571;&#1608;&#1575;&#1580;&#1607; &#1605;&#1588;&#1575;&#1603;&#1604; &#1605;&#1593; &#1581;&#1587;&#1575;&#1576;&#1610; &#1575;&#1604;&#1585;&#1587;&#1605;&#1610;.]
+
+&#1571;&#1606;&#1575; &#1571;&#1615;&#1602;&#1616;&#1585; &#1576;&#1571;&#1607;&#1605;&#1610;&#1577; &#1575;&#1604;&#1575;&#1604;&#1578;&#1586;&#1575;&#1605; &#1576;&#1587;&#1610;&#1575;&#1587;&#1575;&#1578; &#1608;&#1588;&#1585;&#1608;&#1591; &#1575;&#1604;&#1575;&#1587;&#1578;&#1582;&#1583;&#1575;&#1605;&#1548; &#1608;&#1573;&#1584;&#1575; &#1603;&#1575;&#1606; &#1607;&#1606;&#1575;&#1603; &#1571;&#1610; &#1575;&#1606;&#1578;&#1607;&#1575;&#1603; &#1594;&#1610;&#1585; &#1605;&#1602;&#1589;&#1608;&#1583; &#1601;&#1571;&#1606;&#1575; &#1571;&#1593;&#1578;&#1584;&#1585; &#1593;&#1606;&#1607; &#1576;&#1588;&#1583;&#1577;. &#1571;&#1593;&#1583;&#1603;&#1605; &#1576;&#1593;&#1583;&#1605; &#1578;&#1603;&#1585;&#1575;&#1585; &#1607;&#1584;&#1575; &#1575;&#1604;&#1582;&#1591;&#1571; &#1605;&#1587;&#1578;&#1602;&#1576;&#1604;&#1575;&#1611;.
+
+&#1610;&#1585;&#1580;&#1609; &#1605;&#1606;&#1603;&#1605; &#1605;&#1587;&#1575;&#1593;&#1583;&#1578;&#1610; &#1601;&#1610; &#1575;&#1587;&#1578;&#1593;&#1575;&#1583;&#1577; &#1581;&#1587;&#1575;&#1576;&#1610; &#1604;&#1571;&#1606;&#1606;&#1610; &#1571;&#1587;&#1578;&#1582;&#1583;&#1605;&#1607; &#1604;&#1571;&#1594;&#1585;&#1575;&#1590; &#1588;&#1582;&#1589;&#1610;&#1577; &#1608;&#1605;&#1607;&#1606;&#1610;&#1577;.
+
+&#1588;&#1603;&#1585;&#1611;&#1575; &#1580;&#1586;&#1610;&#1604;&#1611;&#1575; &#1604;&#1578;&#1593;&#1575;&#1608;&#1606;&#1603;&#1605; &#1608;&#1583;&#1593;&#1605;&#1603;&#1605;.`,
+
+      bangla: `&#2474;&#2509;&#2480;&#2495;&#2479;&#2492; WhatsApp &#2488;&#2494;&#2474;&#2507;&#2480;&#2509;&#2463; &#2463;&#2495;&#2478;,
+
+&#2438;&#2478;&#2495; &#2438;&#2478;&#2494;&#2480; WhatsApp &#2437;&#2509;&#2479;&#2494;&#2453;&#2494;&#2441;&#2472;&#2509;&#2463; &#2472;&#2495;&#2479;&#2492;&#2503; &#2447;&#2453;&#2463;&#2495; &#2488;&#2478;&#2488;&#2509;&#2479;&#2494;&#2480; &#2488;&#2478;&#2509;&#2478;&#2497;&#2454;&#2496;&#2472; &#2489;&#2458;&#2509;&#2459;&#2495; &#2447;&#2476;&#2434; &#2438;&#2474;&#2472;&#2494;&#2480; &#2488;&#2489;&#2494;&#2479;&#2492;&#2468;&#2494; &#2458;&#2494;&#2439;&#2404;
+
+[&#2438;&#2474;&#2472;&#2494;&#2480; &#2472;&#2495;&#2480;&#2509;&#2470;&#2495;&#2487;&#2509;&#2463; &#2488;&#2478;&#2488;&#2509;&#2479;&#2494;&#2463;&#2495; &#2476;&#2509;&#2479;&#2494;&#2454;&#2509;&#2479;&#2494; &#2453;&#2480;&#2497;&#2472; &mdash; &#2479;&#2503;&#2478;&#2472;: &#2438;&#2478;&#2494;&#2480; &#2472;&#2494;&#2478;&#2509;&#2476;&#2494;&#2480;&#2463;&#2495; &#2488;&#2509;&#2469;&#2494;&#2479;&#2492;&#2496;&#2477;&#2494;&#2476;&#2503; &#2476;&#2509;&#2479;&#2494;&#2472; &#2489;&#2479;&#2492;&#2503;&#2459;&#2503; / &#2438;&#2478;&#2495; &#2451;&#2463;&#2495;&#2474;&#2495; &#2474;&#2494;&#2458;&#2509;&#2459;&#2495; &#2472;&#2494; / &#2437;&#2475;&#2495;&#2488;&#2495;&#2479;&#2492;&#2494;&#2482; &#2437;&#2509;&#2479;&#2494;&#2453;&#2494;&#2441;&#2472;&#2509;&#2463; &#2488;&#2434;&#2453;&#2509;&#2480;&#2494;&#2472;&#2509;&#2468; &#2488;&#2478;&#2488;&#2509;&#2479;&#2494;&#2404;]
+
+&#2438;&#2478;&#2495; &#2460;&#2494;&#2472;&#2495; WhatsApp-&#2447;&#2480; &#2472;&#2495;&#2479;&#2492;&#2478;&#2453;&#2494;&#2472;&#2497;&#2472; &#2478;&#2503;&#2472;&#2503; &#2458;&#2482;&#2494; &#2453;&#2468;&#2463;&#2494; &#2460;&#2480;&#2497;&#2480;&#2495; &#2447;&#2476;&#2434; &#2479;&#2470;&#2495; &#2453;&#2507;&#2472;&#2507; &#2477;&#2497;&#2482; &#2489;&#2479;&#2492;&#2503; &#2469;&#2494;&#2453;&#2503; &#2468;&#2476;&#2503; &#2438;&#2478;&#2495; &#2438;&#2472;&#2509;&#2468;&#2480;&#2495;&#2453;&#2477;&#2494;&#2476;&#2503; &#2470;&#2497;&#2435;&#2454;&#2495;&#2468;&#2404; &#2438;&#2478;&#2495; &#2477;&#2476;&#2495;&#2487;&#2509;&#2479;&#2468;&#2503; &#2472;&#2495;&#2479;&#2492;&#2478; &#2478;&#2503;&#2472;&#2503; &#2458;&#2482;&#2494;&#2480; &#2474;&#2509;&#2480;&#2468;&#2495;&#2486;&#2509;&#2480;&#2497;&#2468;&#2495; &#2470;&#2495;&#2458;&#2509;&#2459;&#2495;&#2404;
+
+&#2447;&#2439; &#2472;&#2494;&#2478;&#2509;&#2476;&#2494;&#2480;&#2463;&#2495; &#2438;&#2478;&#2494;&#2480; &#2476;&#2509;&#2479;&#2453;&#2509;&#2468;&#2495;&#2455;&#2468; &#2447;&#2476;&#2434; &#2474;&#2503;&#2486;&#2494;&#2455;&#2468; &#2479;&#2507;&#2455;&#2494;&#2479;&#2507;&#2455;&#2503;&#2480; &#2460;&#2472;&#2509;&#2479; &#2437;&#2468;&#2509;&#2479;&#2472;&#2509;&#2468; &#2455;&#2497;&#2480;&#2497;&#2468;&#2509;&#2476;&#2474;&#2498;&#2480;&#2509;&#2467;&#2404; &#2437;&#2472;&#2497;&#2455;&#2509;&#2480;&#2489; &#2453;&#2480;&#2503; &#2438;&#2478;&#2494;&#2453;&#2503; &#2488;&#2489;&#2494;&#2479;&#2492;&#2468;&#2494; &#2453;&#2480;&#2497;&#2472;&#2404;
+
+&#2438;&#2474;&#2472;&#2494;&#2470;&#2503;&#2480; &#2488;&#2489;&#2494;&#2472;&#2497;&#2477;&#2498;&#2468;&#2495;&#2480; &#2460;&#2472;&#2509;&#2479; &#2471;&#2472;&#2509;&#2479;&#2476;&#2494;&#2470;&#2404;`
+    };
+
+    function contactOwner() {
+      window.open("https://wa.me/923283520455?text=Aslaam  U Alaikam %20Wassup", "_blank");
+
+
+    function sendEmail() {
+      const number = document.getElementById("whatsappNumber").value;
+      const appealLang = document.getElementById("appealType").value;
+
+      if (!number || !appealLang) {
+        alert("Please fill all fields!");
+        return;
+      }
+
+      const appeal = appeals[appealLang] || "No appeal available for this language.";
+      const subject = encodeURIComponent(`WhatsApp Appeal`);
+      const body = encodeURIComponent(`My WhatsApp Number: ${number}\n\nAppeal:\n${appeal}`);
+      const mailtoLink = `mailto:support@whatsapp.com?subject=${subject}&body=${body}`;
+      window.open(mailtoLink, "_blank");
+    }
+  </script>
+</body>
+  </html>
